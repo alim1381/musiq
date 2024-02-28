@@ -1,10 +1,10 @@
 // src/theme.ts
 "use client";
-import { Nunito, Roboto } from "next/font/google";
+import { Nunito, Lato } from "next/font/google";
 import { createTheme } from "@mui/material/styles";
 
-const nunito = Nunito({
-  weight: ["300", "400", "500", "700", "800"],
+const nunito = Lato({
+  weight: ["300", "400", "700", "900"],
   subsets: ["latin"],
 });
 

@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Toolbar from "@mui/material/Toolbar";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/layout/Sidebar";
 
 const drawerWidth = 240;
 
