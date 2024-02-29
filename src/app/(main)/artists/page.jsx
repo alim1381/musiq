@@ -2,6 +2,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import { getClient } from "@/lib/graphql/client";
 import { GET_ALL_ARTISTS } from "@/lib/graphql/querys";
 import ArtistCard from "../components/card/ArtistCard";
+import Link from "next/link";
 
 async function AlbumsPage() {
   const artists = await getClient().query({ query: GET_ALL_ARTISTS });
@@ -20,7 +21,7 @@ async function AlbumsPage() {
             sm={3}
             sx={{ display: "flex", justifyContent: "center" }}
           >
-            <ArtistCard name={artist.name} contentImage={artist.avatar} />
+            <Link href={`/artists/${artist.slug}`} ><ArtistCard name={artist.name} contentImage={artist.avatar} /></Link>
           </Grid>
         ))}
       </Grid>

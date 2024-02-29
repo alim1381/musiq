@@ -52,4 +52,67 @@ const GET_PLAYLISTS = gql`
     }
   }
 `;
-export { GET_TRACKS, GET_ALL_ALBUMS, GET_ALL_ARTISTS, GET_PLAYLISTS };
+
+const GET_ONE_ALBUM = gql`
+  query GetOneAlbum($slug: String!) {
+    getOneAlbum(slug: $slug) {
+      information {
+        id
+        name
+        slug
+        cover
+      }
+      tracks {
+        name
+        slug
+        path
+        artist {
+          name
+        }
+        album {
+          cover
+        }
+        likes {
+          id
+          username
+        }
+        listen_count
+      }
+    }
+  }
+`;
+
+const GET_ONE_ARTIST = gql`
+  query GetOneArtist($slug: String!) {
+    getOneArtist(slug: $slug) {
+      information {
+        name
+        avatar
+        slug
+        bio
+      }
+      tracks {
+        id
+        name
+        slug
+        path
+        listen_count
+        artist {
+          name
+        }
+        album {
+          cover
+        }
+      }
+    }
+  }
+`;
+
+export {
+  GET_TRACKS,
+  GET_ALL_ALBUMS,
+  GET_ALL_ARTISTS,
+  GET_PLAYLISTS,
+  GET_ONE_ALBUM,
+  GET_ONE_ARTIST,
+};
