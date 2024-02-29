@@ -1,8 +1,8 @@
 const { gql } = require("@apollo/client");
 
-const GET_HOT_TRACKS = gql`
-  query {
-    getTracks(limit: 6, category: "hot-tracks") {
+const GET_TRACKS = gql`
+  query GetTracks($limit: Int!, $category: String!) {
+    getTracks(limit: $limit, category: $category) {
       id
       name
       slug
@@ -16,36 +16,40 @@ const GET_HOT_TRACKS = gql`
   }
 `;
 
-const GET_NEW_TRACK = gql`
-  query {
-    getTracks(limit: 6, category: "new-tracks") {
+const GET_ALL_ALBUMS = gql`
+  query GetAlbums {
+    getAlbums {
       id
       name
       slug
-      artist {
-        name
-      }
-      album {
-        cover
-      }
+      cover
     }
   }
 `;
 
-const GET_TOP_TRACKS = gql`
-  query {
-    getTracks(limit: 6, category: "top-tracks") {
+const GET_ALL_ARTISTS = gql`
+  query GetArtists {
+    getArtists {
       id
       name
+      avatar
       slug
-      artist {
-        name
-      }
-      album {
-        cover
-      }
+      bio
     }
   }
 `;
 
-export { GET_HOT_TRACKS, GET_NEW_TRACK, GET_TOP_TRACKS };
+const GET_PLAYLISTS = gql`
+  query GetPlaylists($limit: Int!) {
+    getPlaylists(limit: $limit) {
+      id
+      name
+      slug
+      userId {
+        id
+        username
+      }
+    }
+  }
+`;
+export { GET_TRACKS, GET_ALL_ALBUMS, GET_ALL_ARTISTS, GET_PLAYLISTS };

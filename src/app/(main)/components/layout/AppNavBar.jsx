@@ -16,6 +16,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import SearchIcon from "@mui/icons-material/Search";
 import MainLogo from "./MainLogo";
+import Link from "next/link";
 
 function AppNavBar({
   container,
@@ -36,18 +37,24 @@ function AppNavBar({
       <MainLogo />
       <Divider />
       <List>
-        {["search", "New Tracks", "Artists", "Alboms", "About Us"].map(
-          (title, index) => (
-            <ListItem key={index} disablePadding>
+        {[
+          { name: "search", path: "search" },
+          { name: "New Tracks", path: "tracks" },
+          { name: "Artists", path: "artists" },
+          { name: "Alboms", path: "albums" },
+          { name: "About Us", path: "about-us" },
+        ].map((item, index) => (
+          <ListItem key={index} disablePadding>
+            <Link href={`/${item.path}`} passHref className=" w-full">
               <ListItemButton>
                 <ListItemIcon>
-                  {drawerIcons[title] || <ArrowForwardIosIcon />}
+                  {drawerIcons[item.name] || <ArrowForwardIosIcon />}
                 </ListItemIcon>
-                <ListItemText primary={title} />
+                <ListItemText primary={item.name} />
               </ListItemButton>
-            </ListItem>
-          )
-        )}
+            </Link>
+          </ListItem>
+        ))}
       </List>
       <Divider />
       <List>

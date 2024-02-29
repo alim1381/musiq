@@ -1,5 +1,5 @@
 "use client";
-import { GET_TOP_TRACKS } from "@/lib/graphql/querys";
+import { GET_TOP_TRACKS, GET_TRACKS } from "@/lib/graphql/querys";
 import { useQuery } from "@apollo/client";
 import { Box, Typography } from "@mui/material";
 import { grey } from "@mui/material/colors";
@@ -14,7 +14,7 @@ function MainBanner() {
     data: topTracksResponse,
     loading: topTracksLoading,
     error: topTracksError,
-  } = useQuery(GET_TOP_TRACKS);
+  } = useQuery(GET_TRACKS , {variables : {limit : 6 , category : "top-tracks"}});
 
   useEffect(() => {
     if (topTracksResponse) {

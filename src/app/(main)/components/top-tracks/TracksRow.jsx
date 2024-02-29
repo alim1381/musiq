@@ -7,10 +7,14 @@ function TracksRow({ title, list }) {
       <Typography variant="h5" component="h2">
         {title}
       </Typography>
-      <Grid container spacing={2} paddingY={2} justifyContent={"space-between"}>
+      <Grid container spacing={2} paddingY={2}>
         {list?.map((item, index) => (
           <Grid key={index} item lg={2} xs={6}>
-            <TrackCard {...item} />
+            <TrackCard
+              name={item.name}
+              artistName={item.artist.name}
+              contentImage={item.album.cover}
+            />
           </Grid>
         ))}
       </Grid>
