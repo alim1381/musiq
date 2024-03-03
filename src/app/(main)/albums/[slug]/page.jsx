@@ -28,8 +28,8 @@ async function AlbumPage({ params }) {
 
       {/* Tracks */}
       <Box sx={{ padding: 2 }}>
-        {album?.data?.getOneAlbum?.tracks.map((track) => (
-          <TrackRow track={track} />
+        {album?.data?.getOneAlbum?.tracks.map((track, index) => (
+          <TrackRow key={index} track={track} />
         ))}
       </Box>
     </Container>

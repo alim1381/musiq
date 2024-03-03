@@ -4,6 +4,7 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "@/mui/theme";
 import "./globals.css";
+import ReduxProvider from "@/lib/provider/ReduxProvider";
 
 const inter = Nunito({ subsets: ["latin"] });
 
@@ -16,11 +17,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ApolloWrapper>
-          <AppRouterCacheProvider>
-            <ThemeProvider theme={theme}>{children}</ThemeProvider>
-          </AppRouterCacheProvider>
-        </ApolloWrapper>
+        <ReduxProvider>
+          <ApolloWrapper>
+            <AppRouterCacheProvider>
+              <ThemeProvider theme={theme}>{children}</ThemeProvider>
+            </AppRouterCacheProvider>
+          </ApolloWrapper>
+        </ReduxProvider>
       </body>
     </html>
   );

@@ -21,9 +21,7 @@ async function AlbumsPage() {
             sm={3}
             sx={{ display: "flex", justifyContent: "center" }}
           >
-            <Link href={`/albums/${album.slug}`} passHref>
-              <TrackCard name={album.name} contentImage={album.cover} />
-            </Link>
+              <TrackCard slug={album.slug} cardType={"album"} name={album.name} contentImage={album.cover} />
           </Grid>
         ))}
       </Grid>

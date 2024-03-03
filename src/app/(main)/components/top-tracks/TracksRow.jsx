@@ -11,6 +11,8 @@ function TracksRow({ title, list }) {
         {list?.map((item, index) => (
           <Grid key={index} item lg={2} xs={6}>
             <TrackCard
+              slug={item.slug}
+              cardType={"track"}
               name={item.name}
               artistName={item.artist.name}
               contentImage={item.album.cover}

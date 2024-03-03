@@ -23,6 +23,8 @@ async function NewTracks() {
             sx={{ display: "flex", justifyContent: "center" }}
           >
             <TrackCard
+              slug={track.slug}
+              cardType={"track"}
               name={track.name}
               artistName={track.artist.name}
               contentImage={track.album.cover}

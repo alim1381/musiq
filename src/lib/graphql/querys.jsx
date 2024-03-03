@@ -108,6 +108,29 @@ const GET_ONE_ARTIST = gql`
   }
 `;
 
+const GET_ONE_TRACK = gql`
+  query GetOneTrack($slug: String!) {
+    getOneTrack(slug: $slug) {
+      id
+      name
+      slug
+      path
+      listen_count
+      artist {
+        name
+        slug
+      }
+      album {
+        cover
+        slug
+      }
+      likes {
+        username
+      }
+    }
+  }
+`;
+
 export {
   GET_TRACKS,
   GET_ALL_ALBUMS,
@@ -115,4 +138,5 @@ export {
   GET_PLAYLISTS,
   GET_ONE_ALBUM,
   GET_ONE_ARTIST,
+  GET_ONE_TRACK,
 };
