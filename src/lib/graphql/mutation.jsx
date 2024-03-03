@@ -16,4 +16,22 @@ const SEARCH_QUERY = gql`
   }
 `;
 
-export { SEARCH_QUERY };
+const SIGN_UP = gql`
+  mutation SignUp($username: String!, $password: String!) {
+    signUp(username: $username, password: $password) {
+      id
+      username
+      token
+    }
+  }
+`;
+const SIGN_IN = gql`
+  mutation SignIn($username: String!, $password: String!) {
+    signIn(username: $username, password: $password) {
+      id
+      username
+      token
+    }
+  }
+`;
+export { SEARCH_QUERY, SIGN_UP, SIGN_IN };

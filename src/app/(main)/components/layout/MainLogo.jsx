@@ -10,7 +10,7 @@ function MainLogo() {
     <Link href={"/"} passHref>
       <Typography
         textAlign={"center"}
-        variant="h6"
+        variant={"h6"}
         component={"h1"}
         color={green[500]}
         fontWeight={800}

@@ -1,6 +1,6 @@
 // src/theme.ts
 "use client";
-import { Nunito, Lato } from "next/font/google";
+import { Lato } from "next/font/google";
 import { createTheme } from "@mui/material/styles";
 
 const nunito = Lato({
@@ -23,6 +23,7 @@ const theme = createTheme({
   },
   palette: {
     mode: "dark",
+    primary: { main: "#4caf50" },
   },
 });
 

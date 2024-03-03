@@ -8,7 +8,7 @@ const initialState = {
       tags: ["pop"],
     },
   ],
-  showPlayer: true,
+  showPlayer: false,
 };
 
 export const player = createSlice({
@@ -17,6 +17,7 @@ export const player = createSlice({
   reducers: {
     changeTrack: (state, action) => {
       return {
+        ...state,
         trackList: [
           {
             url: action.payload.url,
@@ -24,10 +25,9 @@ export const player = createSlice({
             tags: [action.payload.tag],
           },
         ],
-        showPlayer: true,
       };
     },
-    playerOpenOfClose: (state , action) => {
+    playerOpenOfClose: (state, action) => {
       return {
         ...state,
         showPlayer: action.payload.show,

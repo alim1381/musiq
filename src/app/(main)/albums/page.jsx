@@ -2,7 +2,6 @@ import { Box, Grid, Typography } from "@mui/material";
 import { getClient } from "@/lib/graphql/client";
 import { GET_ALL_ALBUMS } from "@/lib/graphql/querys";
 import TrackCard from "../components/card/Card";
-import Link from "next/link";
 
 async function AlbumsPage() {
   const albums = await getClient().query({ query: GET_ALL_ALBUMS });

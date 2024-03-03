@@ -7,6 +7,9 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import MainLogo from "./MainLogo";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 // icons
 import AudiotrackIcon from "@mui/icons-material/Audiotrack";
@@ -15,8 +18,8 @@ import PersonIcon from "@mui/icons-material/Person";
 import InfoIcon from "@mui/icons-material/Info";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import SearchIcon from "@mui/icons-material/Search";
-import MainLogo from "./MainLogo";
-import Link from "next/link";
+import AddIcon from "@mui/icons-material/Add";
+import useAuthClient from "@/hooks/useAuthClient";
 
 function AppNavBar({
   container,
@@ -25,12 +28,16 @@ function AppNavBar({
   handleDrawerClose,
   drawerWidth,
 }) {
+  const pathname = usePathname();
+  const { userData } = useAuthClient();
+
   const drawerIcons = {
     "New Tracks": <AudiotrackIcon />,
     Artists: <PersonIcon />,
     Alboms: <AlbumIcon />,
     "About Us": <InfoIcon />,
     search: <SearchIcon />,
+    "New Playlist": <AddIcon />,
   };
   const drawer = (
     <div>
@@ -57,18 +64,35 @@ function AppNavBar({
         ))}
       </List>
       <Divider />
-      <List>
-        {["New Playlist", "Playlists"].map((title, index) => (
-          <ListItem key={index} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {drawerIcons[title] || <ArrowForwardIosIcon />}
-              </ListItemIcon>
-              <ListItemText primary={title} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      {!userData && (
+        <div className=" w-full flex justify-center mt-4">
+          <Link
+            href={`/auth/login?backurl=${pathname}`}
+            className=" bg-white text-black w-3/4 text-center p-2 rounded-lg font-bold"
+          >
+            Login
+          </Link>
+        </div>
+      )}
+      {userData && (
+        <List>
+          {[
+            { name: "New Playlist", path: "new-playlist" },
+            { name: "My Playlists", path: "my-playlists" },
+          ].map((item, index) => (
+            <ListItem key={index} disablePadding>
+              <Link href={`/${item.path}`} passHref className=" w-full">
+                <ListItemButton>
+                  <ListItemIcon>
+                    {drawerIcons[item.name] || <ArrowForwardIosIcon />}
+                  </ListItemIcon>
+                  <ListItemText primary={item.name} />
+                </ListItemButton>
+              </Link>
+            </ListItem>
+          ))}
+        </List>
+      )}
     </div>
   );
   return (

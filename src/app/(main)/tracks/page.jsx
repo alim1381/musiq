@@ -15,9 +15,10 @@ async function NewTracks() {
       </Typography>
 
       <Grid container spacing={4} paddingY={2}>
-        {newTracks.data?.getTracks.map((track) => (
+        {newTracks.data?.getTracks.map((track, index) => (
           <Grid
             item
+            key={index}
             xs={12}
             sm={3}
             sx={{ display: "flex", justifyContent: "center" }}

@@ -131,6 +131,15 @@ const GET_ONE_TRACK = gql`
   }
 `;
 
+const WHO_I_AM = gql`
+  query WhoIAm {
+    whoIAm {
+      id
+      username
+    }
+  }
+`;
+
 export {
   GET_TRACKS,
   GET_ALL_ALBUMS,
@@ -139,4 +148,5 @@ export {
   GET_ONE_ALBUM,
   GET_ONE_ARTIST,
   GET_ONE_TRACK,
+  WHO_I_AM,
 };
