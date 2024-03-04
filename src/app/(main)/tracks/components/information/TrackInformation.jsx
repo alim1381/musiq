@@ -2,15 +2,25 @@ import { Box, Divider, Typography } from "@mui/material";
 import Image from "next/image";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import PlayTrackInPlayer from "../PlayTrackInPlayer";
+import LikeAndDislike from "../like-and-dislike/LikeAndDislike";
 
-function TrackInformation({ type, name, artist, image, likes, view, path }) {
+function TrackInformation({
+  id,
+  type,
+  name,
+  artist,
+  image,
+  likes,
+  view,
+  path,
+  likers,
+}) {
   return (
     <>
       <Box
         sx={{
-          padding: 10,
+          padding: { sm: 10, xs: 4 },
           display: "flex",
           flexDirection: { md: "row", xs: "column" },
           alignItems: "center",
@@ -23,12 +33,24 @@ function TrackInformation({ type, name, artist, image, likes, view, path }) {
           width={200}
           className=" rounded-md"
         />
-        <Box flexDirection="column" sx={{ marginLeft: { md: 5 } }}>
+        <Box
+          flexDirection="column"
+          sx={{
+            marginLeft: { md: 5 },
+            textAlign: { xs: "center", md: "left" },
+          }}
+        >
           <Typography component="div" fontWeight="bold">
             {name} - {artist}
           </Typography>
           <Typography color="text.secondary">#{type}</Typography>
-          <Box sx={{ display: "flex", gap: 2 }}>
+          <Box
+            sx={{
+              display: "flex",
+              gap: 2,
+              justifyContent: { xs: "center", md: "flex-start" },
+            }}
+          >
             <Typography color="text.secondary">
               <RemoveRedEyeIcon color="text.secondary" /> {view}
             </Typography>
@@ -44,7 +66,7 @@ function TrackInformation({ type, name, artist, image, likes, view, path }) {
               title={`${name} - ${artist}`}
               tag={name}
             />
-            <FavoriteBorderIcon fontSize="large" />
+            <LikeAndDislike likers={likers} trackId={id} />
           </Box>
         </Box>
       </Box>

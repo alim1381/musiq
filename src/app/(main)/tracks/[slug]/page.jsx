@@ -5,6 +5,7 @@ import BackButton from "../../components/back-button/BackButton";
 import TrackRow from "../../components/card/TrackRow";
 import TrackInformation from "../components/information/TrackInformation";
 import { revalidateAction } from "@/app/actions";
+import CommentSection from "../components/comment-section/CommentSection";
 
 async function TrackPage({ params }) {
   const track = await getClient().query({
@@ -25,19 +26,19 @@ async function TrackPage({ params }) {
       {/* Information */}
       <TrackInformation
         type={"music"}
+        id={track.data.getOneTrack.id}
         path={`${process.env.STATIC_URL}${track.data.getOneTrack.path}`}
         name={track.data.getOneTrack.name}
         image={`${process.env.STATIC_URL}${track.data.getOneTrack.album.cover}`}
         artist={track.data.getOneTrack.artist.name}
         likes={track?.data?.getOneTrack?.likes.length}
+        likers={track?.data?.getOneTrack?.likes}
         view={track?.data?.getOneTrack?.listen_count}
       />
 
-      {/* Tracks */}
+      {/* Comments */}
       <Box sx={{ padding: 2 }}>
-        {/* {track?.data?.getOneTrack?.tracks.map((track) => (
-          <TrackRow track={track} />
-        ))} */}
+        <CommentSection trackId={track.data.getOneTrack.id} />
       </Box>
     </Container>
   );

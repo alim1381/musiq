@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from "react-redux";
 function PlayTrackInPlayer({ url, title, tag }) {
   const playerState = useSelector(getPlayerState);
   const dispatch = useDispatch();
-  console.log(playerState);
 
   useEffect(() => {
     dispatch(changeTrack({ url, title, tag }));

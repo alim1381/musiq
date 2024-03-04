@@ -3,6 +3,7 @@ import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import AudiotrackIcon from "@mui/icons-material/Audiotrack";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Link from "next/link";
+import LikeAndDislike from "../../tracks/components/like-and-dislike/LikeAndDislike";
 
 function TrackRow({ track }) {
   return (
@@ -36,7 +37,6 @@ function TrackRow({ track }) {
         </Box>
       </Box>
       <Box>
-        <FavoriteBorderIcon fontSize="large" sx={{ marginRight: 1 }} />
         <Link href={`/tracks/${track.slug}`} passHref>
           <PlayCircleIcon fontSize="large" />
         </Link>

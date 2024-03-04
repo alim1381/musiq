@@ -34,4 +34,16 @@ const SIGN_IN = gql`
     }
   }
 `;
-export { SEARCH_QUERY, SIGN_UP, SIGN_IN };
+
+const LIKE_DISLIKE = gql`
+  mutation ToLike($id: String!) {
+    toLike(trackId: $id)
+  }
+`;
+
+const CREATE_COMMENT = gql`
+  mutation CreateComment($trackId: String!, $text: String!) {
+    createComment(trackId: $trackId, text: $text)
+  }
+`;
+export { SEARCH_QUERY, SIGN_UP, SIGN_IN, LIKE_DISLIKE, CREATE_COMMENT };

@@ -125,7 +125,7 @@ const GET_ONE_TRACK = gql`
         slug
       }
       likes {
-        username
+        id
       }
     }
   }
@@ -140,6 +140,19 @@ const WHO_I_AM = gql`
   }
 `;
 
+const GET_COMMENTS = gql`
+  query GetComments($trackId: String!) {
+    getComments(trackId: $trackId) {
+      id
+      text
+      userId {
+        id
+        username
+      }
+    }
+  }
+`;
+
 export {
   GET_TRACKS,
   GET_ALL_ALBUMS,
@@ -149,4 +162,5 @@ export {
   GET_ONE_ARTIST,
   GET_ONE_TRACK,
   WHO_I_AM,
+  GET_COMMENTS,
 };

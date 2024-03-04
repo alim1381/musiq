@@ -25,7 +25,6 @@ export async function whoIAm() {
     const user = await getClient().query({
       query: WHO_I_AM,
     });
-    console.log(user);
   
     return user;
   } catch (error) {
