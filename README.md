@@ -1,8 +1,8 @@
 # Music Publishing with NextJs <img width="28px" src="https://bestofjs.org/logos/nextjs.dark.svg" />
 
 a practice project with :
-- NextJs 14 (front-end)
-- ExpressJs (back-end)
+- NextJs 14 <a href="https://github.com/alim1381/musiq">(front-end)</a>
+- ExpressJs <a href="https://github.com/alim1381/musiq-server">(back-end)</a>
 - GraphQL api
 - MongoDB Database
 - Material Ui Components
