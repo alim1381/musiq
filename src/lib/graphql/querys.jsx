@@ -153,6 +153,41 @@ const GET_COMMENTS = gql`
   }
 `;
 
+const GET_ALL_PLAYLISTS = gql`
+  query GetPlaylists {
+    getPlaylists {
+      id
+      name
+      slug
+      userId {
+        id
+        username
+      }
+    }
+  }
+`;
+
+const GET_ONE_PLAYLIST = gql`
+  query GetOnePlaylist($slug: String!) {
+    getOnePlaylist(slug: $slug) {
+      id
+      name
+      slug
+      userId {
+        id
+      }
+      tracks {
+        id
+        name
+        slug
+        artist {
+          name
+        }
+      }
+    }
+  }
+`;
+
 export {
   GET_TRACKS,
   GET_ALL_ALBUMS,
@@ -163,4 +198,6 @@ export {
   GET_ONE_TRACK,
   WHO_I_AM,
   GET_COMMENTS,
+  GET_ALL_PLAYLISTS,
+  GET_ONE_PLAYLIST,
 };

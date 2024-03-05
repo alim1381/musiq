@@ -1,7 +1,8 @@
 import { Box, Divider, Typography } from "@mui/material";
+import AlbumIcon from "@mui/icons-material/Album";
 import Image from "next/image";
 
-function InformationHeader({type , title , image , number}) {
+function InformationHeader({ type, title, image, number }) {
   return (
     <>
       <Box
@@ -12,13 +13,17 @@ function InformationHeader({type , title , image , number}) {
           alignItems: "center",
         }}
       >
-        <Image
-          src={image}
-          alt={title}
-          height={200}
-          width={200}
-          className=" rounded-md"
-        />
+        {!image && <AlbumIcon fontSize="large" />}
+
+        {image && (
+          <Image
+            src={image}
+            alt={title}
+            height={200}
+            width={200}
+            className=" rounded-md"
+          />
+        )}
         <Box flexDirection="column" sx={{ marginLeft: { md: 5 } }}>
           <Typography component="div" fontWeight="bold">
             {title}

@@ -46,4 +46,32 @@ const CREATE_COMMENT = gql`
     createComment(trackId: $trackId, text: $text)
   }
 `;
-export { SEARCH_QUERY, SIGN_UP, SIGN_IN, LIKE_DISLIKE, CREATE_COMMENT };
+
+const CREATE_PLAYLIST = gql`
+  mutation CreatePlaylist($name: String!) {
+    createPlaylist(name: $name)
+  }
+`;
+
+const ADD_TO_PLAYLIST = gql`
+  mutation AddToPlaylist($trackId: String!, $playlistId: String!) {
+    addToPlaylist(trackId: $trackId, playlistId: $playlistId)
+  }
+`;
+
+const DELETE_FROM_PLAYLIST = gql`
+  mutation RemoveFromPlaylist($trackId: String!, $playlistId: String!) {
+    removeFromPlaylist(trackId: $trackId, playlistId: $playlistId)
+  }
+`;
+
+export {
+  SEARCH_QUERY,
+  SIGN_UP,
+  SIGN_IN,
+  LIKE_DISLIKE,
+  CREATE_COMMENT,
+  CREATE_PLAYLIST,
+  ADD_TO_PLAYLIST,
+  DELETE_FROM_PLAYLIST,
+};

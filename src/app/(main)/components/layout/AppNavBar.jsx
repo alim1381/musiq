@@ -49,6 +49,7 @@ function AppNavBar({
           { name: "New Tracks", path: "tracks" },
           { name: "Artists", path: "artists" },
           { name: "Alboms", path: "albums" },
+          { name: "Playlists", path: "playlists" },
           { name: "About Us", path: "about-us" },
         ].map((item, index) => (
           <ListItem key={index} disablePadding>
@@ -76,21 +77,20 @@ function AppNavBar({
       )}
       {userData && (
         <List>
-          {[
-            { name: "New Playlist", path: "new-playlist" },
-            { name: "My Playlists", path: "my-playlists" },
-          ].map((item, index) => (
-            <ListItem key={index} disablePadding>
-              <Link href={`/${item.path}`} passHref className=" w-full">
-                <ListItemButton>
-                  <ListItemIcon>
-                    {drawerIcons[item.name] || <ArrowForwardIosIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={item.name} />
-                </ListItemButton>
-              </Link>
-            </ListItem>
-          ))}
+          {[{ name: "New Playlist", path: "new-playlist" }].map(
+            (item, index) => (
+              <ListItem key={index} disablePadding>
+                <Link href={`/${item.path}`} passHref className=" w-full">
+                  <ListItemButton>
+                    <ListItemIcon>
+                      {drawerIcons[item.name] || <ArrowForwardIosIcon />}
+                    </ListItemIcon>
+                    <ListItemText primary={item.name} />
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+            )
+          )}
         </List>
       )}
     </div>

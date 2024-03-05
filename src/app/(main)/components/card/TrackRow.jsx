@@ -1,11 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import AudiotrackIcon from "@mui/icons-material/Audiotrack";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Link from "next/link";
-import LikeAndDislike from "../../tracks/components/like-and-dislike/LikeAndDislike";
+import RemoveFromPlaylist from "../../tracks/components/add-remove-from-playlist/RemoveFromPlaylist";
 
-function TrackRow({ track }) {
+function TrackRow({ track, playlist }) {
   return (
     <Box
       key={track.id}
@@ -36,7 +35,8 @@ function TrackRow({ track }) {
           <Typography color="text.secondary">{track.artist.name}</Typography>
         </Box>
       </Box>
-      <Box>
+      <Box sx={{ display: "flex", gap: 1 }}>
+        {playlist && <RemoveFromPlaylist track={track} playlist={playlist} />}
         <Link href={`/tracks/${track.slug}`} passHref>
           <PlayCircleIcon fontSize="large" />
         </Link>

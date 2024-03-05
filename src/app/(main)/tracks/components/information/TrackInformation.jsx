@@ -4,6 +4,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import PlayTrackInPlayer from "../PlayTrackInPlayer";
 import LikeAndDislike from "../like-and-dislike/LikeAndDislike";
+import AddAndRemoveFromPlaylist from "../add-remove-from-playlist/AddAndRemoveFromPlaylist";
 
 function TrackInformation({
   id,
@@ -59,14 +60,23 @@ function TrackInformation({
             </Typography>
           </Box>
           <Box
-            sx={{ marginTop: 2, display: "flex", gap: 1, alignItems: "center" }}
+            sx={{
+              marginTop: 2,
+              display: "flex",
+              flexDirection: { md: "row", xs: "column" },
+              gap: 1,
+              alignItems: "center",
+            }}
           >
             <PlayTrackInPlayer
               url={path}
               title={`${name} - ${artist}`}
               tag={name}
             />
-            <LikeAndDislike likers={likers} trackId={id} />
+            <Box sx={{ display: "flex", gap: 1 }}>
+              <LikeAndDislike likers={likers} trackId={id} />
+              <AddAndRemoveFromPlaylist trackId={id} />
+            </Box>
           </Box>
         </Box>
       </Box>
