@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["localhost", "musiq-roan.vercel.app"],
+    domains: ["localhost", "musiq-ten.vercel.app"],
   },
   experimental: {
     missingSuspenseWithCSRBailout: false,
