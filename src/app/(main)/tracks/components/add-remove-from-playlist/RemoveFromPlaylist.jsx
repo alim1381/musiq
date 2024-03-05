@@ -1,13 +1,15 @@
 "use client";
+import { revalidateRouteAction } from "@/app/actions";
 import useAuthClient from "@/hooks/useAuthClient";
 import { DELETE_FROM_PLAYLIST } from "@/lib/graphql/mutation";
 import { useMutation } from "@apollo/client";
 import DeleteSweepIcon from "@mui/icons-material/DeleteSweep";
 import { Backdrop, CircularProgress } from "@mui/material";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 function RemoveFromPlaylist({ playlist, track }) {
+  const pathname = usePathname();
   const router = useRouter();
   const { userData } = useAuthClient();
   const [deleteTrack, { data, loading, error }] = useMutation(
@@ -18,6 +20,7 @@ function RemoveFromPlaylist({ playlist, track }) {
   );
 
   useEffect(() => {
+    revalidateRouteAction(pathname);
     if (data) router.refresh();
   }, [data]);
 

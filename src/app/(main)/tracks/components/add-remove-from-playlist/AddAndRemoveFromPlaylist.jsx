@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { ADD_TO_PLAYLIST } from "@/lib/graphql/mutation";
 import { Backdrop, CircularProgress, Snackbar } from "@mui/material";
 import { useRouter } from "next/navigation";
+import { revalidateRouteAction } from "@/app/actions";
 
 function AddAndRemoveFromPlaylist({ trackId }) {
   const router = useRouter();
@@ -39,6 +40,7 @@ function AddAndRemoveFromPlaylist({ trackId }) {
 
   useEffect(() => {
     if (data) {
+      revalidateRouteAction(`/playlists/${selectedPlaylist?.slug}`);
       router.push(`/playlists/${selectedPlaylist?.slug}`);
     }
   }, [data]);
@@ -78,8 +80,9 @@ function AddAndRemoveFromPlaylist({ trackId }) {
               <button onClick={() => setShowMyPlaylists(false)}>Close</button>
             </div>
             <div className=" p-2">
-              {myPlaylists?.map((item) => (
+              {myPlaylists?.map((item, index) => (
                 <div
+                  key={index}
                   onClick={() => clickHandler({ id: item.id, slug: item.slug })}
                   className=" flex justify-between p-2 hover:bg-neutral-900 rounded-md cursor-pointer"
                 >
