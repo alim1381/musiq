@@ -7,7 +7,7 @@ export function authMiddleware(middleware) {
     const { pathname } = req.nextUrl;
     const currentPath = pathname.split("/")[1];
 
-    if (["new-playlists", "my-playlists"].includes(currentPath)) {
+    if (["new-playlist"].includes(currentPath)) {
       const token = cookieStore.get("token")?.value;
 
       if (!token) {
